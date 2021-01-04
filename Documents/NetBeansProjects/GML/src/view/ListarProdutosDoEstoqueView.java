@@ -45,18 +45,23 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextFieldQuantidade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBoxSeletorDeCategoria1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaCampoDoResultSet = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
+        jComboBoxSegundo = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome do Produto");
 
         jLabel2.setText("Categoria");
 
         jComboBoxSeletorDeCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Selecione uma categoria>", "Smartphones", "Acessorios", "Hardwares", "Consoles", "Jogos" }));
+        jComboBoxSeletorDeCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSeletorDeCategoriaActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,18 +82,23 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
 
         jLabel5.setText("Selecionar todos os produtos de uma categoria");
 
-        jComboBoxSeletorDeCategoria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Selecione uma categoria>", "Smartphones", "Acessorios", "Hardwares", "Consoles", "Jogos" }));
-        jComboBoxSeletorDeCategoria1.addActionListener(new java.awt.event.ActionListener() {
+        jTextAreaCampoDoResultSet.setColumns(20);
+        jTextAreaCampoDoResultSet.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaCampoDoResultSet);
+
+        jButton2.setText("Buscar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSeletorDeCategoria1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jButton2.setText("Buscar");
+        jComboBoxSegundo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Selecione uma categoria>", "Smartphones", "Acessorios", "Hardwares", "Consoles", "Jogos" }));
+        jComboBoxSegundo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSegundoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,12 +125,13 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
                                 .addComponent(jTextFieldValor, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jComboBoxSeletorDeCategoria, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jComboBoxSeletorDeCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)))))
+                                .addComponent(jComboBoxSegundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)))))
                 .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
@@ -133,7 +144,7 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNomeDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxSeletorDeCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSegundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -168,9 +179,17 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
         controller.buscarProdutoDoBancoDeDados();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBoxSeletorDeCategoria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeletorDeCategoria1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        controller.listandoProdutosPorCategoria();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBoxSeletorDeCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeletorDeCategoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxSeletorDeCategoria1ActionPerformed
+    }//GEN-LAST:event_jComboBoxSeletorDeCategoriaActionPerformed
+
+    private void jComboBoxSegundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSegundoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSegundoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,15 +229,15 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBoxSegundo;
     private javax.swing.JComboBox<String> jComboBoxSeletorDeCategoria;
-    private javax.swing.JComboBox<String> jComboBoxSeletorDeCategoria1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaCampoDoResultSet;
     private javax.swing.JTextField jTextFieldNomeDoProduto;
     private javax.swing.JTextField jTextFieldQuantidade;
     private javax.swing.JTextField jTextFieldValor;
@@ -232,8 +251,20 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
         this.jComboBoxSeletorDeCategoria = jComboBoxSeletorDeCategoria;
     }
 
+    public JTextArea getjTextAreaCampoDoResultSet() {
+        return jTextAreaCampoDoResultSet;
+    }
+
+    public void setjTextAreaCampoDoResultSet(JTextArea jTextAreaCampoDoResultSet) {
+        this.jTextAreaCampoDoResultSet = jTextAreaCampoDoResultSet;
+    }
+
     public JTextField getjTextFieldNomeDoProduto() {
         return jTextFieldNomeDoProduto;
+    }
+
+    public void setjTextFieldNomeDoProduto(JTextField jTextFieldNomeDoProduto) {
+        this.jTextFieldNomeDoProduto = jTextFieldNomeDoProduto;
     }
 
     public JTextField getjTextFieldQuantidade() {
@@ -244,6 +275,14 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
         this.jTextFieldQuantidade = jTextFieldQuantidade;
     }
 
+    public JComboBox<String> getjComboBoxSegundo() {
+        return jComboBoxSegundo;
+    }
+
+    public void setjComboBoxSegundo(JComboBox<String> jComboBoxSegundo) {
+        this.jComboBoxSegundo = jComboBoxSegundo;
+    }
+
     public JTextField getjTextFieldValor() {
         return jTextFieldValor;
     }
@@ -252,7 +291,5 @@ public class ListarProdutosDoEstoqueView extends javax.swing.JFrame {
         this.jTextFieldValor = jTextFieldValor;
     }
 
-    public void setjTextFieldNomeDoProduto(JTextField jTextFieldNomeDoProduto) {
-        this.jTextFieldNomeDoProduto = jTextFieldNomeDoProduto;
-    }
+    
 }

@@ -151,7 +151,153 @@ public class ListarProdutosDoEstoqueController {
             
         }  
     }
-        
-          
     
+    public void listandoProdutosPorCategoria(){         
+          
+        String categoria = view.getjComboBoxSegundo().getSelectedItem().toString();
+        ListarProdutosDoEstoqueModel model = new ListarProdutosDoEstoqueModel(categoria);
+         
+        
+        if (view.getjComboBoxSegundo().getSelectedItem().equals("<Selecione uma categoria>")){
+            JOptionPane.showMessageDialog(view, "Selecione uma categoria");
+
+
+        }else if(view.getjComboBoxSegundo().getSelectedItem().equals("Smartphones")){
+            
+            try {
+            Connection conecta = new Conexao().getConnection();
+            ListarProdutosDoEstoqueDao dao = new ListarProdutosDoEstoqueDao(conecta);
+            ArrayList<ListarProdutosDoEstoqueModel> lista = dao.listandoTodosOsDadosPorCategoria(model);
+            
+            if ( lista != null){
+                for (ListarProdutosDoEstoqueModel busca : lista){
+                    
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + busca.getId() + "-");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Produto: " + busca.getNomeDoProduto() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Valor unitario R$: " + busca.getValor() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Quantidade em estoque: " + busca.getQuantidade()+ "\n\n");
+                    
+                }
+              } 
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarProdutosDoEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(view, "Erro no metodo listandoProdutosPorCategoria \n" + ex);
+        } 
+                                
+        
+        }else if(view.getjComboBoxSegundo().getSelectedItem().equals("Acessorios")){
+            
+            try {
+            Connection conecta = new Conexao().getConnection();
+            ListarProdutosDoEstoqueDao dao = new ListarProdutosDoEstoqueDao(conecta);
+            ArrayList<ListarProdutosDoEstoqueModel> lista = dao.listandoTodosOsDadosPorCategoria(model);
+            
+            
+                if ( lista != null){
+                for (ListarProdutosDoEstoqueModel busca : lista){
+                    
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + busca.getId() + "-");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Produto: " + busca.getNomeDoProduto() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Valor unitario R$: " + busca.getValor() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Quantidade em estoque: " + busca.getQuantidade()+ "\n\n");
+                    
+                }
+              } 
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarProdutosDoEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(view, "Erro no metodo listandoProdutosPorCategoria \n" + ex);
+        } 
+                                
+        
+        }else if(view.getjComboBoxSegundo().getSelectedItem().equals("Hardwares")){
+            
+            try {
+            Connection conecta = new Conexao().getConnection();
+            ListarProdutosDoEstoqueDao dao = new ListarProdutosDoEstoqueDao(conecta);
+            ArrayList<ListarProdutosDoEstoqueModel> lista = dao.listandoTodosOsDadosPorCategoria(model);
+            
+            
+                if ( lista != null){
+                for (ListarProdutosDoEstoqueModel busca : lista){
+                    
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + busca.getId() + "-");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Produto: " + busca.getNomeDoProduto() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Valor unitario R$: " + busca.getValor() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Quantidade em estoque: " + busca.getQuantidade()+ "\n\n");
+                    
+                }
+              }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarProdutosDoEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(view, "Erro no metodo listandoProdutosPorCategoria \n" + ex);
+        } 
+                                
+        
+        }else if(view.getjComboBoxSegundo().getSelectedItem().equals("Consoles")){
+            
+            try {
+            Connection conecta = new Conexao().getConnection();
+            ListarProdutosDoEstoqueDao dao = new ListarProdutosDoEstoqueDao(conecta);
+            ArrayList<ListarProdutosDoEstoqueModel> lista = dao.listandoTodosOsDadosPorCategoria(model);
+            
+            
+                if ( lista != null){
+                for (ListarProdutosDoEstoqueModel busca : lista){
+                    
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + busca.getId() + "-");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Produto: " + busca.getNomeDoProduto() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Valor unitario R$: " + busca.getValor() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Quantidade em estoque: " + busca.getQuantidade()+ "\n\n");
+                    
+                }
+              } 
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarProdutosDoEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(view, "Erro no metodo listandoProdutosPorCategoria \n" + ex);
+        } 
+                                
+        
+        }else if(view.getjComboBoxSegundo().getSelectedItem().equals("Jogos")){
+            
+            try {
+            Connection conecta = new Conexao().getConnection();
+            ListarProdutosDoEstoqueDao dao = new ListarProdutosDoEstoqueDao(conecta);
+            ArrayList<ListarProdutosDoEstoqueModel> lista = dao.listandoTodosOsDadosPorCategoria(model);
+            
+            
+                if ( lista != null){
+                for (ListarProdutosDoEstoqueModel busca : lista){
+                    
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + busca.getId() + "-");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Produto: " + busca.getNomeDoProduto() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Valor unitario R$: " + busca.getValor() + "\n");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Quantidade em estoque: " + busca.getQuantidade()+ "\n\n");
+                    
+                }
+              }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarProdutosDoEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(view, "Erro no metodo listandoProdutosPorCategoria \n" + ex);
+        } 
+                                
+        
+        }
+        
+        
+    }
 }
+    
+        
+        
+    
+

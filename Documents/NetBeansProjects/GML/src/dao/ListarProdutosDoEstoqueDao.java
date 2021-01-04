@@ -34,7 +34,7 @@ public class ListarProdutosDoEstoqueDao {
         
         try {
             
-        String sql = "SELECT * FROM " +model.getCategoria() + " WHERE NOME_DO_PRODUTO = ? ";
+        String sql = "SELECT * FROM " + model.getCategoria() + " WHERE NOME_DO_PRODUTO = ?";
         
         PreparedStatement stmt = conecta.prepareStatement(sql);
         
@@ -71,28 +71,37 @@ public class ListarProdutosDoEstoqueDao {
         
         try {
             
-        String sql = "SELECT * FROM " +model.getCategoria()+ " WHERE CATEGORIA = ? " ;
+        String sql = "SELECT * FROM " + model.getCategoria() + " WHERE CATEGORIA = ? ";
+        
         PreparedStatement stmt = conecta.prepareStatement(sql);
         
         stmt.setString(1, model.getCategoria());
         
         ResultSet rs = stmt.executeQuery();
         
+        ArrayList<ListarProdutosDoEstoqueModel> lista = new ArrayList<>();
+        
         while (rs.next()){
             
             ListarProdutosDoEstoqueModel produtos = new ListarProdutosDoEstoqueModel();
             produtos.setCategoria(rs.getString("CATEGORIA"));
+            produtos.setId(rs.getInt("ID"));
             produtos.setNomeDoProduto(rs.getString("NOME_DO_PRODUTO"));
             produtos.setQuantidade(rs.getInt("QUANTIDADE"));
             produtos.setValor(rs.getFloat("VALOR"));
+            lista.add(produtos);
+            
             
         }
+        stmt.close();
+        return lista;
          
         } catch (SQLException ex) {
             Logger.getLogger(ListarProdutosDoEstoqueDao.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
-        
         return null;
+  
     }    
 }
 

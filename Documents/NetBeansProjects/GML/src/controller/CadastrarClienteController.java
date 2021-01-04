@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.CadastrarClienteModel;
 import view.CadastrarClienteView;
+import view.MenuPrincipalView;
 
 /**
  *
@@ -22,11 +23,12 @@ import view.CadastrarClienteView;
 public class CadastrarClienteController {
     
     private final CadastrarClienteView view;
+    private MenuPrincipalView viewMenu;
 
     public CadastrarClienteController(CadastrarClienteView view) {
         this.view = view;
     }
-    
+
     public void cadastrarCliente(CadastrarClienteView cadastrarClienteView){
         
         String nomeCliente = cadastrarClienteView.getjTextFieldNomeCliente().getText();

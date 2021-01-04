@@ -12,7 +12,7 @@ package model;
 public class ListarProdutosDoEstoqueModel {
     
     
-     
+    private int id; 
     private String nomeDoProduto;
     private String categoria;
     private float valor;
@@ -21,19 +21,15 @@ public class ListarProdutosDoEstoqueModel {
     
     //CONSTRUTOR
 
-    public ListarProdutosDoEstoqueModel(String nomeDoProduto, String categoria, float valor, int quantidade) {
-        this.nomeDoProduto = nomeDoProduto;
+    public ListarProdutosDoEstoqueModel(String categoria) {
         this.categoria = categoria;
-        this.valor = valor;
-        this.quantidade = quantidade;
     }
-
+    
     public ListarProdutosDoEstoqueModel(String nomeDoProduto, String categoria) {
         this.nomeDoProduto = nomeDoProduto;
         this.categoria = categoria;
     }
-
-
+    
     public ListarProdutosDoEstoqueModel() {
     }
     
@@ -70,6 +66,14 @@ public class ListarProdutosDoEstoqueModel {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

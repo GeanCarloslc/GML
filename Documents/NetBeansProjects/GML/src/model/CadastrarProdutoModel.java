@@ -15,6 +15,7 @@ public class CadastrarProdutoModel {
     private String nomeDoProduto;
     private float valor;
     private int quantidade;
+    private int id;
     
     //CONSTRUTOR
 
@@ -24,6 +25,16 @@ public class CadastrarProdutoModel {
         this.valor = valor;
         this.quantidade = quantidade;
     }
+
+    public CadastrarProdutoModel(String categoria, String nomeDoProduto, float valor, int quantidade, int id) {
+        this.categoria = categoria;
+        this.nomeDoProduto = nomeDoProduto;
+        this.valor = valor;
+        this.quantidade = quantidade;
+        this.id = id;
+    }
+    
+    
 
     public CadastrarProdutoModel() {
     }
@@ -61,6 +72,14 @@ public class CadastrarProdutoModel {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

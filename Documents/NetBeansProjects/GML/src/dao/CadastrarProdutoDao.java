@@ -29,7 +29,7 @@ public class CadastrarProdutoDao {
            
         try {
             
-            String sql = "INSERT INTO " +model.getCategoria() + "(CATEGORIA, NOME_DO_PRODUTO, VALOR, QUANTIDADE) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO " +model.getCategoria() + "(CATEGORIA, NOME_DO_PRODUTO, VALOR, QUANTIDADE, IDCATEGORIA) VALUES(?,?,?,?,?)";
             
             PreparedStatement stmt = conecta.prepareStatement(sql);
             
@@ -37,6 +37,7 @@ public class CadastrarProdutoDao {
             stmt.setString(2, model.getNomeDoProduto());
             stmt.setFloat(3, model.getValor());
             stmt.setInt(4, model.getQuantidade());
+            stmt.setInt(5, model.getId());
             
             stmt.execute();
             stmt.close();    

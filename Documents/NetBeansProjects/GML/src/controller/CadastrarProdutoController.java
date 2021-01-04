@@ -42,8 +42,10 @@ public class CadastrarProdutoController {
             String nomeDoProduto = view.getjTextFieldNomeDoProduto().getText();
             float valor = Float.parseFloat(view.getjTextFieldValor().getText());
             int quantidade = Integer.parseInt(view.getjTextFieldQuantidade().getText());
+            int id = 1;
             
-            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade);
+            
+            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade, id);
             
             try {
                 
@@ -65,8 +67,10 @@ public class CadastrarProdutoController {
             String nomeDoProduto = view.getjTextFieldNomeDoProduto().getText();
             float valor = Float.parseFloat(view.getjTextFieldValor().getText());
             int quantidade = Integer.parseInt(view.getjTextFieldQuantidade().getText());
+            int id = 2;
             
-            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade);
+            
+            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade, id);
             
             try {
                 
@@ -89,8 +93,10 @@ public class CadastrarProdutoController {
             String nomeDoProduto = view.getjTextFieldNomeDoProduto().getText();
             float valor = Float.parseFloat(view.getjTextFieldValor().getText());
             int quantidade = Integer.parseInt(view.getjTextFieldQuantidade().getText());
+            int id = 3;
             
-            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade);
+            
+            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade, id);
             
             try {
                 
@@ -112,8 +118,10 @@ public class CadastrarProdutoController {
             String nomeDoProduto = view.getjTextFieldNomeDoProduto().getText();
             float valor = Float.parseFloat(view.getjTextFieldValor().getText());
             int quantidade = Integer.parseInt(view.getjTextFieldQuantidade().getText());
+            int id = 4;
             
-            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade);
+            
+            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade, id);
             
             try {
                 
@@ -136,8 +144,10 @@ public class CadastrarProdutoController {
             String nomeDoProduto = view.getjTextFieldNomeDoProduto().getText();
             float valor = Float.parseFloat(view.getjTextFieldValor().getText());
             int quantidade = Integer.parseInt(view.getjTextFieldQuantidade().getText());
+            int id = 5;
             
-            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade);
+            
+            CadastrarProdutoModel model = new CadastrarProdutoModel(categoria, nomeDoProduto, valor, quantidade, id);
             
             try {
                 
