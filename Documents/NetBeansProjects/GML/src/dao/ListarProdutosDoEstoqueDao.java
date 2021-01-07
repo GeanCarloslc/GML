@@ -81,7 +81,10 @@ public class ListarProdutosDoEstoqueDao {
         
         ArrayList<ListarProdutosDoEstoqueModel> lista = new ArrayList<>();
         
+        
+        
         while (rs.next()){
+            
             
             ListarProdutosDoEstoqueModel produtos = new ListarProdutosDoEstoqueModel();
             produtos.setCategoria(rs.getString("CATEGORIA"));
@@ -90,6 +93,7 @@ public class ListarProdutosDoEstoqueDao {
             produtos.setQuantidade(rs.getInt("QUANTIDADE"));
             produtos.setValor(rs.getFloat("VALOR"));
             lista.add(produtos);
+            
             
             
         }

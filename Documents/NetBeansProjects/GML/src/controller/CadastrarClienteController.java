@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.CadastrarClienteModel;
 import view.CadastrarClienteView;
-import view.MenuPrincipalView;
+
 
 /**
  *
@@ -23,7 +23,7 @@ import view.MenuPrincipalView;
 public class CadastrarClienteController {
     
     private final CadastrarClienteView view;
-    private MenuPrincipalView viewMenu;
+    
 
     public CadastrarClienteController(CadastrarClienteView view) {
         this.view = view;

@@ -26,7 +26,7 @@ public class CadastrarClienteDao {
     public void cadastrarClientes(CadastrarClienteModel model) throws SQLException {
         
         
-        String sql = "INSERT INTO CADASTRODECLIENTE(NOME, CPF, RG, NASCIMENTO, EMAIL) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO CADASTRO_DE_CLIENTE(NOME, CPF, RG, NASCIMENTO, EMAIL) VALUES (?,?,?,?,?)";
          
         PreparedStatement stmt = conecta.prepareStatement(sql);
         stmt.setString(1, model.getNomeCliente());

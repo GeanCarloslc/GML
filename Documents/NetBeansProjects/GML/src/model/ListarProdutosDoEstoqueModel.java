@@ -16,8 +16,7 @@ public class ListarProdutosDoEstoqueModel {
     private String nomeDoProduto;
     private String categoria;
     private float valor;
-    private int quantidade;
-    
+    private int quantidade;   
     
     //CONSTRUTOR
 
@@ -75,7 +74,7 @@ public class ListarProdutosDoEstoqueModel {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     
     
 }

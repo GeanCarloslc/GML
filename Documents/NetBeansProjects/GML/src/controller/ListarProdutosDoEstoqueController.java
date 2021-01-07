@@ -172,7 +172,7 @@ public class ListarProdutosDoEstoqueController {
             if ( lista != null){
                 for (ListarProdutosDoEstoqueModel busca : lista){
                     
-                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + busca.getId() + "-");
+                    view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + busca.getId()+ "-");
                     view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Produto: " + busca.getNomeDoProduto() + "\n");
                     view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Valor unitario R$: " + busca.getValor() + "\n");
                     view.getjTextAreaCampoDoResultSet().setText(view.getjTextAreaCampoDoResultSet().getText() + "Quantidade em estoque: " + busca.getQuantidade()+ "\n\n");
@@ -294,7 +294,10 @@ public class ListarProdutosDoEstoqueController {
         }
         
         
+        
+        
     }
+    
 }
     
         
