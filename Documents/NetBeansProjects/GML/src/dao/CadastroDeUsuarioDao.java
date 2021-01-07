@@ -25,8 +25,8 @@ public class CadastroDeUsuarioDao {
         this.conecta = conecta;
     }
     
-    public void salvarUsuarioeSenha(CadastroDeUsuarioModel model){
-        try {
+    public void salvarUsuarioeSenha(CadastroDeUsuarioModel model) throws SQLException{
+        
             
         String sql = "INSERT INTO ACESSO(USUARIO, SENHA, EMAIL) VALUES (?,?,?)";
         
@@ -37,9 +37,6 @@ public class CadastroDeUsuarioDao {
         stmt.execute();
         conecta.close();
         
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         
         

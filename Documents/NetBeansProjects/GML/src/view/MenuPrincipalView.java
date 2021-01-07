@@ -59,7 +59,12 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setText("Caixa");
+        jButton3.setText("Reservar Produto");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setText("Remover Produtos");
@@ -73,7 +78,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton6.setText("Listar Produtos Por Cliente");
+        jButton6.setText("Listar Produtos por Cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,6 +140,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         CadastrarProdutoView cadastrarProdutoView = new CadastrarProdutoView();
         cadastrarProdutoView.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ItensPedidosPorClienteView itensPedidosPorClienteView = new ItensPedidosPorClienteView();
+        itensPedidosPorClienteView.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

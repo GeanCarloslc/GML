@@ -9,6 +9,7 @@ import dao.Conexao;
 import dao.ItensPedidosPorClienteDao;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -47,21 +48,40 @@ public class ItensPedidosPorClienteController {
             
             // Utilizado o (model) para realizar o set das informações do metodo updateDiminuindoAQuantidadeDaEntidadeCategoria
             ItensPedidosPorClienteModel model = new ItensPedidosPorClienteModel(nomeDoProduto, categoria, quantidade);
-            // Utilizado o (model2) para realizar o set das informações do metodo updateDiminuindoAQuantidadeDaEntidadeCategoria
+            // Utilizado o (model2) para realizar o set das informações do metodo insertNaTabelaItensPorClientes
             ItensPedidosPorClienteModel model2 = new ItensPedidosPorClienteModel(nomeDoProduto, cpf, categoria, idCategoria, quantidade, valor);
-            
-            
+            // Utilizado o (model3) para realizar o Resultset do ID_DO_PEDIDO do metodo 
+            ItensPedidosPorClienteModel model3 = new ItensPedidosPorClienteModel(cpf);
+              
             try {
                 
                 Connection conecta = new Conexao().getConnection();
                 ItensPedidosPorClienteDao dao = new ItensPedidosPorClienteDao(conecta);
                 dao.updateDiminuindoAQuantidadeDaEntidadeCategoria(model);
                 dao.insertNaTabelaItensPorClientes(model2);
-                
+                  
             } catch (SQLException ex) {
                 Logger.getLogger(ItensPedidosPorClienteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            try {
+                
+                Connection conecta = new Conexao().getConnection();
+                ItensPedidosPorClienteDao dao = new ItensPedidosPorClienteDao(conecta);
+                ArrayList<ItensPedidosPorClienteModel> lista = dao.listandoAOrdemDeServico(model3);
+                
+                
+                if ( lista != null){
+                for (ItensPedidosPorClienteModel busca : lista){
+                    
+                    view.getjTextAreaOrdemDeServico().setText(view.getjTextAreaOrdemDeServico().getText() + "O.S: " + busca.getOrdemDeServico() + "\n");
+                    
+                }
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ItensPedidosPorClienteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             
             

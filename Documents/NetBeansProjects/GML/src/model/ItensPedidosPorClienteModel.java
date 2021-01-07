@@ -17,6 +17,7 @@ public class ItensPedidosPorClienteModel {
     int idCategoria;
     int quantidade;
     float valor;
+    int ordemDeServico;
     
     //CONSTRUTOR
 
@@ -38,7 +39,10 @@ public class ItensPedidosPorClienteModel {
         this.quantidade = quantidade;
     }
 
-    
+    public ItensPedidosPorClienteModel(String cpf) {
+        this.cpf = cpf;
+    }
+
      
     //GETTERS AND SETTERS
 
@@ -88,6 +92,14 @@ public class ItensPedidosPorClienteModel {
 
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public int getOrdemDeServico() {
+        return ordemDeServico;
+    }
+
+    public void setOrdemDeServico(int ordemDeServico) {
+        this.ordemDeServico = ordemDeServico;
     }
     
     

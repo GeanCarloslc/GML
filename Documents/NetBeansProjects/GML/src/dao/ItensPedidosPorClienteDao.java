@@ -7,7 +7,11 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.ItensPedidosPorClienteModel;
 
 /**
@@ -52,6 +56,40 @@ public class ItensPedidosPorClienteDao {
         stmt.close();
           
     }
+    
+    public ArrayList<ItensPedidosPorClienteModel> listandoAOrdemDeServico(ItensPedidosPorClienteModel model){
+        
+        
+        try {
+  
+            String sql = "SELECT ID_DO_PEDIDO FROM ITENSPORCLIENTES WHERE CPF_ITENS = ?";
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            
+            stmt.setString(1, model.getCpf());
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            ArrayList<ItensPedidosPorClienteModel> ordemDeServiço = new ArrayList<>();
+            
+            while (rs.next()) { 
+                
+                ItensPedidosPorClienteModel buscaDaOrdemDeServico = new ItensPedidosPorClienteModel(); 
+                buscaDaOrdemDeServico.setOrdemDeServico(rs.getInt("ID_DO_PEDIDO"));
+                ordemDeServiço.add(buscaDaOrdemDeServico);
+                     
+            }
+            
+            stmt.close();
+            return ordemDeServiço;
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ItensPedidosPorClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        return null;  
+    }
+    
     
     
 }
