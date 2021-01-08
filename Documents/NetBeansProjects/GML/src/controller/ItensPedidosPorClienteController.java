@@ -74,7 +74,7 @@ public class ItensPedidosPorClienteController {
                 if ( lista != null){
                 for (ItensPedidosPorClienteModel busca : lista){
                     
-                    view.getjTextAreaOrdemDeServico().setText(view.getjTextAreaOrdemDeServico().getText() + "O.S: " + busca.getOrdemDeServico() + "\n");
+                    view.getjTextAreaOrdemDeServico().setText(view.getjTextAreaOrdemDeServico().getText() + "Cod: " + busca.getOrdemDeServico() + "\n");
                     
                 }
                 }
