@@ -34,7 +34,7 @@ public class ListarProdutosDoEstoqueDao {
         
         try {
             
-        String sql = "SELECT * FROM " + model.getCategoria() + " WHERE NOME_DO_PRODUTO = ?";
+        String sql = "SELECT * FROM " + model.getCategoria() + " WHERE NOME_DO_PRODUTO LIKE ?";
         
         PreparedStatement stmt = conecta.prepareStatement(sql);
         

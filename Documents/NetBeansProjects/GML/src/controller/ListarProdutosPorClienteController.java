@@ -31,7 +31,7 @@ public class ListarProdutosPorClienteController {
     
     public void buscandoInformacoesDoBanco(){
         
-        String nomeDoCliente = view.getjTextFieldCliente().getText();
+        String nomeDoCliente = view.getjTextFieldCliente().getText() + "%";
         String cpf = view.getjTextFieldCpf().getText();
         
         ListarProdutosPorClienteModel model = new ListarProdutosPorClienteModel(nomeDoCliente, cpf);

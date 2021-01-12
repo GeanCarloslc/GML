@@ -42,7 +42,7 @@ public class ItensPedidosPorClienteDao {
     
     public void insertNaTabelaItensPorClientes (ItensPedidosPorClienteModel model) throws SQLException{
         
-        String sql = "INSERT INTO ITENSPORCLIENTES(ID_CATEGORIA, CPF_ITENS, NOME_DO_PRODUTO, QUANTIDADE, VALOR) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO ITENSPORCLIENTES(ID_CATEGORIA, CPF_ITENS, NOME_DO_PRODUTO, QUANTIDADE, DESCONTO, VALOR) VALUES(?,?,?,?,?,?)";
         
         PreparedStatement stmt = conecta.prepareStatement(sql);
         
@@ -50,14 +50,15 @@ public class ItensPedidosPorClienteDao {
         stmt.setString(2, model.getCpf());
         stmt.setString(3, model.getNomeDoProduto());
         stmt.setInt(4, model.getQuantidade());
-        stmt.setFloat(5, model.getValor());
+        stmt.setInt(5, model.getDesconto());
+        stmt.setFloat(6, model.getValor());
         
         stmt.execute();
         stmt.close();
           
     }
     
-    public ArrayList<ItensPedidosPorClienteModel> listandoAOrdemDeServico(ItensPedidosPorClienteModel model){
+    public ArrayList<ItensPedidosPorClienteModel> listandoOIdDoPedido(ItensPedidosPorClienteModel model){
         
         
         try {
@@ -73,9 +74,9 @@ public class ItensPedidosPorClienteDao {
             
             while (rs.next()) { 
                 
-                ItensPedidosPorClienteModel buscaDaOrdemDeServico = new ItensPedidosPorClienteModel(); 
-                buscaDaOrdemDeServico.setOrdemDeServico(rs.getInt("ID_DO_PEDIDO"));
-                ordemDeServiço.add(buscaDaOrdemDeServico);
+                ItensPedidosPorClienteModel buscaIdDoPedido = new ItensPedidosPorClienteModel(); 
+                buscaIdDoPedido.setIdDoPedido(rs.getInt("ID_DO_PEDIDO"));
+                ordemDeServiço.add(buscaIdDoPedido);
                      
             }
             
@@ -90,6 +91,35 @@ public class ItensPedidosPorClienteDao {
         return null;  
     }
     
-    
+    public ArrayList<ItensPedidosPorClienteModel> listandoOsValoresDoBancoComOBotao(ItensPedidosPorClienteModel model){
+        
+        try { 
+        String sql ="SELECT * FROM " +model.getCategoria()+ " WHERE NOME_DO_PRODUTO = ?";
+        PreparedStatement stmt = conecta.prepareStatement(sql);
+        
+        stmt.setString(1, model.getNomeDoProduto());
+        
+        ArrayList<ItensPedidosPorClienteModel> lista = new ArrayList<>();
+        
+        ResultSet rs = stmt.executeQuery();
+        
+            while (rs.next()) {
+                ItensPedidosPorClienteModel DadosArray = new ItensPedidosPorClienteModel();
+                DadosArray.setValor(rs.getFloat("VALOR"));
+                DadosArray.setQuatidadeEmEstoque(rs.getInt("QUANTIDADE"));
+                lista.add(DadosArray);
+                
+            }
+            
+            stmt.close();
+            return lista;
+        
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ItensPedidosPorClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+    }
     
 }

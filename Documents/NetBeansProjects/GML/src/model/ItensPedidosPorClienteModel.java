@@ -11,25 +11,29 @@ package model;
  */
 public class ItensPedidosPorClienteModel {
     
-    String nomeDoProduto;
-    String cpf;
-    String categoria;
-    int idCategoria;
-    int quantidade;
-    float valor;
-    int ordemDeServico;
+    private String nomeDoProduto;
+    private String cpf;
+    private String categoria;
+    private int desconto;
+    private int idCategoria;
+    private int quantidade;
+    private float valor;
+    private int quatidadeEmEstoque;
+    private int idDoPedido;
+    
     
     //CONSTRUTOR
 
     public ItensPedidosPorClienteModel() {
     }
 
-    public ItensPedidosPorClienteModel(String nomeDoProduto, String cpf, String categoria, int idCategoria, int quantidade, float valor) {
+    public ItensPedidosPorClienteModel(String nomeDoProduto, String cpf, String categoria, int idCategoria, int quantidade, int desconto, float valor) {
         this.nomeDoProduto = nomeDoProduto;
         this.cpf = cpf;
         this.categoria = categoria;
         this.idCategoria = idCategoria;
         this.quantidade = quantidade;
+        this.desconto = desconto;
         this.valor = valor;
     }
 
@@ -42,6 +46,13 @@ public class ItensPedidosPorClienteModel {
     public ItensPedidosPorClienteModel(String cpf) {
         this.cpf = cpf;
     }
+
+    public ItensPedidosPorClienteModel(String nomeDoProduto, String categoria) {
+        this.nomeDoProduto = nomeDoProduto;
+        this.categoria = categoria;
+    }
+    
+    
 
      
     //GETTERS AND SETTERS
@@ -94,12 +105,28 @@ public class ItensPedidosPorClienteModel {
         this.idCategoria = idCategoria;
     }
 
-    public int getOrdemDeServico() {
-        return ordemDeServico;
+    public int getDesconto() {
+        return desconto;
     }
 
-    public void setOrdemDeServico(int ordemDeServico) {
-        this.ordemDeServico = ordemDeServico;
+    public void setDesconto(int desconto) {
+        this.desconto = desconto;
+    }
+
+    public int getQuatidadeEmEstoque() {
+        return quatidadeEmEstoque;
+    }
+
+    public void setQuatidadeEmEstoque(int quatidadeEmEstoque) {
+        this.quatidadeEmEstoque = quatidadeEmEstoque;
+    }
+
+    public int getIdDoPedido() {
+        return idDoPedido;
+    }
+
+    public void setIdDoPedido(int idDoPedido) {
+        this.idDoPedido = idDoPedido;
     }
     
     

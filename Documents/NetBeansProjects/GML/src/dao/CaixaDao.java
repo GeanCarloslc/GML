@@ -13,40 +13,39 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.ListarProdutosPorClienteModel;
+import model.CaixaModel;
 
 /**
  *
  * @author topga
  */
-public class ListarProdutosPorClienteDao {
+public class CaixaDao {
     
     private Connection conecta;
 
-    public ListarProdutosPorClienteDao(Connection conecta) {
+    public CaixaDao(Connection conecta) {
         this.conecta = conecta;
     }
     
-    public ArrayList<ListarProdutosPorClienteModel> listandoProdutoPorCliente(ListarProdutosPorClienteModel model){
+    public ArrayList<CaixaModel> retornandoOsValoresParaATabela (CaixaModel model){
         
         try {
-            String sql = "SELECT * FROM ITENSPORCLIENTES INNER JOIN CADASTRO_DE_CLIENTE ON CPF = CPF_ITENS WHERE CPF = ? OR NOME = ?"  ;
+            String sql = "SELECT * FROM ITENSPORCLIENTES INNER JOIN CADASTRO_DE_CLIENTE ON CPF = CPF_ITENS WHERE CPF LIKE ?";
             PreparedStatement stmt = conecta.prepareStatement(sql);
             
             stmt.setString(1, model.getCpf());
-            stmt.setString(2, model.getNomeDoCliente());
+            
             
             ResultSet rs = stmt.executeQuery();
             
-            ArrayList<ListarProdutosPorClienteModel> lista = new ArrayList<>();
+            ArrayList<CaixaModel> lista = new ArrayList<>();
             
             while (rs.next()){
                 
-                ListarProdutosPorClienteModel produto = new ListarProdutosPorClienteModel();
-                produto.setNomeDoCliente(rs.getString("NOME"));
-                produto.setNomeDoProduto(rs.getString("NOME_DO_PRODUTO"));
+                CaixaModel produto = new CaixaModel();
+                produto.setCliente(rs.getString("NOME"));
+                produto.setProduto(rs.getString("NOME_DO_PRODUTO"));
                 produto.setQuantidade(rs.getInt("QUANTIDADE"));
-                produto.setEmail(rs.getString("EMAIL"));
                 produto.setValor(rs.getFloat("VALOR"));
                 produto.setIdDoPedido(rs.getInt("ID_DO_PEDIDO"));
                 lista.add(produto);
@@ -62,11 +61,7 @@ public class ListarProdutosPorClienteDao {
         } 
         return null;
         
-
         
     }
-    
-    
-    
     
 }
