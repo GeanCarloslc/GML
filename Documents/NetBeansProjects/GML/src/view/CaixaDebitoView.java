@@ -5,17 +5,23 @@
  */
 package view;
 
+import controller.CaixaDebitoController;
+import javax.swing.JTextField;
+
 /**
  *
  * @author topga
  */
 public class CaixaDebitoView extends javax.swing.JFrame {
 
+    private final CaixaDebitoController controller;
+
     /**
      * Creates new form CaixaDebitoView
      */
     public CaixaDebitoView() {
         initComponents();
+        controller = new CaixaDebitoController(this);
     }
 
     /**
@@ -43,28 +49,53 @@ public class CaixaDebitoView extends javax.swing.JFrame {
         jTextFieldTotal = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldDesconto = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("Débito");
 
-        jLabel2.setText("COD");
+        jLabel2.setText("ID do pedido:");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Cliente:");
 
+        jTextFieldNomeDoCliente.setEditable(false);
+
         jLabel4.setText("Produto:");
+
+        jTextFieldNomeDoProduto.setEditable(false);
 
         jLabel5.setText("Quantidade:");
 
+        jTextFieldQuantidade.setEditable(false);
+
         jLabel6.setText("Valor:");
+
+        jTextFieldValorUnitarioDoProduto.setEditable(false);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setText("Total:");
 
+        jTextFieldTotal.setEditable(false);
+
         jLabel8.setText("Desconto %:");
+
+        jTextFieldDesconto.setEditable(false);
+
+        jButton2.setText("Finalizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,31 +104,37 @@ public class CaixaDebitoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNomeDoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldNomeDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextFieldValorUnitarioDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldIdDoPedido))
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton1)))
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNomeDoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextFieldNomeDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldIdDoPedido))
+                                .addGap(37, 37, 37)
+                                .addComponent(jButton1)))
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jTextFieldDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(260, 260, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(260, 260, Short.MAX_VALUE))
+                        .addComponent(jTextFieldValorUnitarioDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(171, 171, 171))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,13 +168,28 @@ public class CaixaDebitoView extends javax.swing.JFrame {
                     .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldValorUnitarioDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldValorUnitarioDoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(54, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(36, 36, 36))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controller.buscandoDadosDoBancoUtilizandoOIdCliente();
+        controller.operacoesMatematicas();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        controller.utiliandoOInsert();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,8 +226,65 @@ public class CaixaDebitoView extends javax.swing.JFrame {
         });
     }
 
+    public JTextField getjTextFieldDesconto() {
+        return jTextFieldDesconto;
+    }
+
+    public void setjTextFieldDesconto(JTextField jTextFieldDesconto) {
+        this.jTextFieldDesconto = jTextFieldDesconto;
+    }
+
+    public JTextField getjTextFieldIdDoPedido() {
+        return jTextFieldIdDoPedido;
+    }
+
+    public void setjTextFieldIdDoPedido(JTextField jTextFieldIdDoPedido) {
+        this.jTextFieldIdDoPedido = jTextFieldIdDoPedido;
+    }
+
+    public JTextField getjTextFieldNomeDoCliente() {
+        return jTextFieldNomeDoCliente;
+    }
+
+    public void setjTextFieldNomeDoCliente(JTextField jTextFieldNomeDoCliente) {
+        this.jTextFieldNomeDoCliente = jTextFieldNomeDoCliente;
+    }
+
+    public JTextField getjTextFieldNomeDoProduto() {
+        return jTextFieldNomeDoProduto;
+    }
+
+    public void setjTextFieldNomeDoProduto(JTextField jTextFieldNomeDoProduto) {
+        this.jTextFieldNomeDoProduto = jTextFieldNomeDoProduto;
+    }
+
+    public JTextField getjTextFieldQuantidade() {
+        return jTextFieldQuantidade;
+    }
+
+    public void setjTextFieldQuantidade(JTextField jTextFieldQuantidade) {
+        this.jTextFieldQuantidade = jTextFieldQuantidade;
+    }
+
+    public JTextField getjTextFieldValorUnitarioDoProduto() {
+        return jTextFieldValorUnitarioDoProduto;
+    }
+
+    public void setjTextFieldValorUnitarioDoProduto(JTextField jTextFieldValorUnitarioDoProduto) {
+        this.jTextFieldValorUnitarioDoProduto = jTextFieldValorUnitarioDoProduto;
+    }
+
+    public JTextField getjTextFieldTotal() {
+        return jTextFieldTotal;
+    }
+
+    public void setjTextFieldTotal(JTextField jTextFieldTotal) {
+        this.jTextFieldTotal = jTextFieldTotal;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

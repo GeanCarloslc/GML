@@ -15,6 +15,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.CaixaModel;
+import view.CaixaCreditoView;
+import view.CaixaDebitoView;
+import view.CaixaDinheiroView;
 import view.CaixaView;
 
 /**
@@ -62,6 +65,23 @@ public class CaixaController {
             JOptionPane.showMessageDialog(view, "Erro no metodo listandoValoresDoBanco \n" + ex);
         }
         
+    }
+    
+    public void acessandoAsClassesDoCaixa(){
+        
+        if(view.getjRadioButtonDebito().isSelected()){
+            CaixaDebitoView debito = new CaixaDebitoView();
+            debito.setVisible(true);
+            
+        }else if(view.getjRadioButtonDinheiro().isSelected()){
+            CaixaDinheiroView dinheiro = new CaixaDinheiroView();
+            dinheiro.setVisible(true);
+            
+        }else if (view.getjRadioButtonCredito().isSelected()){
+            CaixaCreditoView credito = new CaixaCreditoView();
+            credito.setVisible(true);
+        }
+            
     }
     
 }

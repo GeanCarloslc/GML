@@ -89,6 +89,11 @@ public class CaixaView extends javax.swing.JFrame {
         });
 
         jRadioButtonCredito.setText("Crédito");
+        jRadioButtonCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonCreditoActionPerformed(evt);
+            }
+        });
 
         jRadioButtonDinheiro.setText("Dinheiro");
         jRadioButtonDinheiro.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +105,11 @@ public class CaixaView extends javax.swing.JFrame {
         jLabel2.setText("Selecione a forma de pagamento");
 
         jButton1.setText("Próximo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +172,8 @@ public class CaixaView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDinheiroActionPerformed
-        // TODO add your handling code here:
+        jRadioButtonCredito.setSelected(false);
+        jRadioButtonDebito.setSelected(false);
     }//GEN-LAST:event_jRadioButtonDinheiroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -170,8 +181,18 @@ public class CaixaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jRadioButtonDebitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDebitoActionPerformed
-        // TODO add your handling code here:
+        jRadioButtonCredito.setSelected(false);
+        jRadioButtonDinheiro.setSelected(false);
     }//GEN-LAST:event_jRadioButtonDebitoActionPerformed
+
+    private void jRadioButtonCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCreditoActionPerformed
+        jRadioButtonDebito.setSelected(false);
+        jRadioButtonDinheiro.setSelected(false);
+    }//GEN-LAST:event_jRadioButtonCreditoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controller.acessandoAsClassesDoCaixa();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

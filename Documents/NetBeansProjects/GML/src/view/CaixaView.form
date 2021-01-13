@@ -152,6 +152,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cr&#xe9;dito"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonCreditoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonDinheiro">
       <Properties>
@@ -170,6 +173,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Pr&#xf3;ximo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
