@@ -48,5 +48,18 @@ public class RemoverProdutoDao {
         return lista; 
     }
     
+    public void utilizandoODelete(RemoverProdutoModel model) throws SQLException{
+        
+        String sql = "DELETE FROM " + model.getCategoria()+ " WHERE ID = ?";
+        
+        PreparedStatement stmt = conecta.prepareStatement(sql);
+        
+        stmt.setInt(1, model.getIdDoProduto());
+        
+        stmt.execute();
+        
+        stmt.close();
+        
+    }
     
 }

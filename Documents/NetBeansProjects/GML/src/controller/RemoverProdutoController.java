@@ -57,14 +57,31 @@ public class RemoverProdutoController {
                 });
                 
             }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(RemoverProdutoController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         }
             
+    }
+    
+    public void deletandoEntidadesDoBanco(){
+        
+        String categoria = view.getjComboBoxSeletorDeCategoria().getSelectedItem().toString();
+        int idCategoria = Integer.parseInt(view.getjTextFieldID().getText());
+        RemoverProdutoModel model = new RemoverProdutoModel(idCategoria, categoria);
+        
+        try {
+            Connection conecta = new Conexao().getConnection();
+            RemoverProdutoDao dao = new RemoverProdutoDao(conecta);
+            dao.utilizandoODelete(model);
+            JOptionPane.showMessageDialog(view, "Produto removido!");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RemoverProdutoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }

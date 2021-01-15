@@ -69,6 +69,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setText("Remover Produtos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton5.setText("Cadastrar Cliente");
@@ -172,6 +177,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         CaixaView caixaView = new CaixaView();
         caixaView.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        RemoverProdutoView view = new RemoverProdutoView();
+        view.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

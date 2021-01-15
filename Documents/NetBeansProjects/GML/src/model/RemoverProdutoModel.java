@@ -26,6 +26,11 @@ public class RemoverProdutoModel {
     public RemoverProdutoModel(String categoria) {
         this.categoria = categoria;
     }
+
+    public RemoverProdutoModel(int idDoProduto, String categoria) {
+        this.idDoProduto = idDoProduto;
+        this.categoria = categoria;
+    }
     
     
     
