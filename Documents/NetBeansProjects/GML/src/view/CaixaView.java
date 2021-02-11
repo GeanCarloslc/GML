@@ -47,6 +47,7 @@ public class CaixaView extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Caixa- GML");
 
         jLabel1.setText("CPF");
 
